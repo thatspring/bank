@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'usermanage/style.css' %}"/>
+<ul>
+    <li><a class="active" href="{% url 'usermanage:index' %}">Log In</a></li>
+    <li><a href="{% url 'usermanage:register' %}">Register</a></li>
+</ul>
+<div id="main">
+    <form action="{% url 'usermanage:index' %}" method="post">
+        {% csrf_token %}
+
+        <div class="fieldWrapper">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{ form.password.id_for_label }}">Password:</label>
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{ form.captcha.id_for_label }}">Captcha:</label>
+            {{ form.captcha }}
+            {{ form.captcha.errors }}
+        </div>
+        {{ form.non_field_errors }}
+        <input type="submit" value="Log In"/>
+    </form>
+    <a href="{% url 'usermanage:register' %}">Sign Up</a>
+</div>

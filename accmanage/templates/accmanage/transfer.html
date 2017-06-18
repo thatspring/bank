@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'usermanage/style.css' %}"/>
+<ul>
+    <li><a href="{% url 'usermanage:homepage' %}">Log In</a></li>
+    <li><a class="active" href="{% url 'accmanage:transferAccount' %}">Transfer</a></li>
+</ul>
+<div id="main">
+    <form action="{% url 'accmanage:transferAccount' %}" method="post">
+        {% csrf_token %}
+
+        <div class="fieldWrapper">
+            <label for="{{ form.money.id_for_label }}">Money$:</label>
+            {{ form.money }}
+            {{ form.money.errors }}
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{ form.comment.id_for_label }}">Comment:</label>
+            {{ form.comment }}
+            {{ form.comment.errors }}
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{ form.target.id_for_label }}">Target:</label>
+            {{ form.target }}
+            {{ form.target.errors }}
+        </div>
+        <div class="fieldWrapper">
+            <label for="{{ form.captcha.id_for_label }}">Captcha:</label>
+            {{ form.captcha }}
+            {{ form.captcha.errors }}
+        </div>
+        {{ form.non_field_errors }}
+        <input type="submit" value="Transfer"/>
+    </form>
+</div>

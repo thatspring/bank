@@ -1,0 +1,25 @@
+{% load usermanage_templatetags %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'usermanage/style.css' %}"/>
+
+
+<div id="main">
+    <div id="user_info">
+        <span>转账金额:</span>
+        <span>{{transfer.money|prepend_dollars}}</span>
+    </div>
+    <div id="user_info">
+        <span>备注:</span>
+        <span>{{transfer.comment}}</span>
+    </div>
+    <div id="user_info">
+        <span>收款人:</span>
+        <span>{{transfer.target}}</span>
+    </div>
+    <div id="user_info">
+        <span>收款人邮箱:</span>
+        <span>{{target_email}}</span>
+    </div>
+    <a href="{% url 'usercheck:check' %}">确认</a>
+    <a href="{% url 'accmanage:transferAccount' %}">返回</a>
+</div>

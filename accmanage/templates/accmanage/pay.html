@@ -1,0 +1,23 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+{% load usermanage_templatetags %}
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'usermanage/style.css' %}"/>
+
+
+<div id="main">
+    <div id="user_info">
+        <span>转账金额:</span>
+        <span>{{form.money}}</span>
+    </div>
+    <div id="user_info">
+        <span>备注:</span>
+        <span>{{form.comment}}</span>
+    </div>
+    <div id="user_info">
+        <span>收款人:</span>
+        <span>{{form.target}}</span>
+    </div>
+    <a href="{% url 'usercheck:check' %}">确认</a>
+    <a href="{% url 'accmanage:transferAccount' %}">返回</a>
+</div>

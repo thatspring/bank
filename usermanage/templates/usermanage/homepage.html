@@ -1,0 +1,29 @@
+{% load usermanage_templatetags %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'usermanage/style.css' %}"/>
+<ul>
+    <li><a class="active" href="{% url 'usermanage:homepage' %}">Home</a></li>
+    <li><a href="{% url 'accmanage:transferAccount' %}">Transfer</a></li>
+</ul>
+
+<div id="main">
+    <div id="user_info">
+        <span>姓名:</span>
+        <span>{{user_profile.last_name}} {{user_profile.first_name}}</span>
+    </div>
+    <div id="user_info">
+        <span>账户:</span>
+        <span>{{user_profile.username}}</span>
+    </div>
+    <div id="user_info">
+        <span>Email:</span>
+        <span>{{user_profile.email}}</span>
+    </div>
+    <div id="user_info">
+        <span>账户余额:</span>
+        <span>{{user_account.balance|prepend_dollars}}</span>
+    </div>
+    <div>
+        <a href="{% url 'usercheck:check' %}">check</a>
+    </div>
+</div>
